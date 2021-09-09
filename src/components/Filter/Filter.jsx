@@ -1,4 +1,5 @@
 import { Label, Input } from "./index";
+import PropTypes from "prop-types";
 
 function Filter(p) {
   return (
@@ -14,5 +15,9 @@ function Filter(p) {
     </>
   );
 }
+
+Filter.propTypes = {
+  onChamge: PropTypes.func,
+};
 
 export default Filter;

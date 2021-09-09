@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Label, Input, Submit, FormS } from "./index";
+import PropTypes from "prop-types";
 
 class Form extends Component {
   state = {
@@ -39,5 +40,10 @@ class Form extends Component {
     );
   }
 }
+
+Form.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default Form;

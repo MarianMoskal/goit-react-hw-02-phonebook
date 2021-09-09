@@ -1,4 +1,5 @@
 import Contacts from "../Contacts";
+import PropTypes from "prop-types";
 
 function ContactList(p) {
   const { contacts, filter, onDelete } = p;
@@ -11,5 +12,11 @@ function ContactList(p) {
     </>
   );
 }
+
+ContactList.propTypes = {
+  filter: PropTypes.string,
+  onDelete: PropTypes.func.isRequired,
+  contacts: PropTypes.array,
+};
 
 export default ContactList;

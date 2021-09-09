@@ -1,4 +1,5 @@
 import { Item, Button } from "./index";
+import PropTypes from "prop-types";
 
 function Contacts(p) {
   const { contacts, filter, onDelete } = p;
@@ -27,6 +28,12 @@ function Contacts(p) {
     </>
   );
 }
+
+Contacts.propTypes = {
+  filter: PropTypes.string,
+  onDelete: PropTypes.func.isRequired,
+  contacts: PropTypes.array,
+};
 
 function makeFilteredContacts(contacts, lowCaseFilter) {
   let filteredContacts = [];
