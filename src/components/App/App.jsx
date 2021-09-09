@@ -17,10 +17,9 @@ class App extends Component {
   };
 
   deleteHandler = (e) => {
-    const { contacts } = this.state;
-    const idx = contacts.indexOf(contacts.find((el) => el.id === e.target.id));
-    contacts.splice(idx, 1);
-    this.setState({ contacts });
+    this.setState((state) => ({
+      contacts: state.contacts.filter((el) => el.id !== e.target.id),
+    }));
   };
 
   handleSubmit = (e) => {
@@ -46,22 +45,22 @@ class App extends Component {
   };
 
   render() {
-    const { handleSubmit, handleInputValue, deleteHandler, state } = this;
+    const { contacts, filter } = this.state;
 
     return (
       <>
         <Container>
           <Title>Phonebook</Title>
-          <Form onChange={handleInputValue} onSubmit={handleSubmit} />
+          <Form onChange={this.handleInputValue} onSubmit={this.handleSubmit} />
         </Container>
-        {state.contacts.length > 0 && (
+        {contacts.length > 0 && (
           <Container>
             <SecondaryTitle>Contacts</SecondaryTitle>
-            <Filter onChange={handleInputValue} />
+            <Filter onChange={this.handleInputValue} />
             <ContactList
-              onDelete={deleteHandler}
-              contacts={state.contacts}
-              filter={state.filter}
+              onDelete={this.deleteHandler}
+              contacts={contacts}
+              filter={filter}
             />
           </Container>
         )}
