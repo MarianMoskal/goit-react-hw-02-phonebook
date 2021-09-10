@@ -37,8 +37,7 @@ class App extends Component {
       inputNumber.value = "";
     } else {
       const contact = { name, number, id: uuidv4() };
-      contacts.push(contact);
-      this.setState({ contacts });
+      this.setState({ contacts: contacts.concat(contact) });
       inputName.value = "";
       inputNumber.value = "";
     }
